@@ -2,3 +2,7 @@
 <h2><%= @station.city %></h2>
 <h2><%= @station.dock_count %></h2>
 <h2><%= @station.installation_date %></h2>
+
+<form action="/stations/<%=@station.id%>/edit">
+  <input type="submit" value="Edit"/>
+</form>
