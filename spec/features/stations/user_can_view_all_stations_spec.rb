@@ -33,9 +33,27 @@ describe "station views" do
     expect(page).to have_content("#{station.installation_date}")
 
   end
-  xit "user can edit a station" do
+
+  it "user can edit a station" do
+    station = Station.create(name: "The Station",dock_count: 1, city: "Denver", installation_date: Date.today)
+
+    visit "/stations/#{station.id}"
+    click_on("Edit")
+    expect(current_path).to eq("/stations/#{station.id}/edit")
+
+    fill_in('station[name]', with: "Police Station")
+    fill_in('station[dock_count]', with: 1000)
+    fill_in('station[city]', with: "Hamburg")
+
+    click_on("Update")
+
+    expect(current_path).to eq("/stations/#{station.id}")
+    expect(page).to have_content("Police Station")
+    expect(page).to have_content("Hamburg")
+    expect(page).to have_content(1000)
 
   end
+
   xit "user can destroy a station" do
 
   end
