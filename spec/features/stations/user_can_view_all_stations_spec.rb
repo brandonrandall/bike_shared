@@ -54,8 +54,20 @@ describe "station views" do
 
   end
 
-  xit "user can destroy a station" do
+  it "user can destroy a station" do
+    station1 = Station.create(name: "The Station",dock_count: 1, city: "Denver", installation_date: Date.today)
+    station2 = Station.create(name: "The Other Station",dock_count: 2, city: "Denver", installation_date: Date.today)
+    stations = Station.all.count
+    visit "/stations/#{station1.id}"
+    click_on("Edit")
+    expect(current_path).to eq("/stations/#{station1.id}/edit")
 
+    click_on("Delete Station")
+
+    expect(current_path).to eq("/stations")
+    expect(page).to have_content("The Other Station")
+    expect(page).to have_content(stations - 1)
+    binding.pry
   end
 
 end
