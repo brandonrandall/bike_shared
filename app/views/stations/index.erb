@@ -1,5 +1,15 @@
 <h1 class='all_stations_title'>All Stations<h1>
-  <th>Station Name</th>
+  <h2>Station Count: <%= @stations_count %></h2>
 <%@stations.each do |station|%>
-  <h3><td><p><%= station.name %></p></td></h3>
+<%#= link_to "Edit", "/stations/#{station.id}/edit", class: "station_as_#{station.id}" %>
+  <h3>Station Name: <%= station.name %></h3>
+  <div class="station<%= station.id%>">
+    <form action="/stations/<%= station.id%>/edit">
+      <input type="submit" value="Edit">
+    </form>
+    <form action="/stations/<%= station.id %>" method="post">
+      <input type='hidden' name='_method' value='DELETE'>
+      <input type="submit" value="Delete Station">
+    </form>
+  </div>
 <% end %>
