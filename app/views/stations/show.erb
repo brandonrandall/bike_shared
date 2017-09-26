@@ -6,7 +6,12 @@
 <form action="/stations/<%= @station.id%>/edit">
   <input type="submit" value="Edit">
 </form>
+
 <form action="/stations/<%= @station.id %>" method="post">
   <input type='hidden' name='_method' value='DELETE'>
   <input type="submit" value="Delete Station">
+</form>
+
+<form action="/stations">
+  <input type="submit" value="View All Stations">
 </form>
