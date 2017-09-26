@@ -3,6 +3,10 @@
 <h2><%= @station.dock_count %></h2>
 <h2><%= @station.installation_date %></h2>
 
-<form action="/stations/<%=@station.id%>/edit">
-  <input type="submit" value="Edit"/>
+<form action="/stations/<%= @station.id%>/edit">
+  <input type="submit" value="Edit">
+</form>
+<form action="/stations/<%= @station.id %>" method="post">
+  <input type='hidden' name='_method' value='DELETE'>
+  <input type="submit" value="Delete Station">
 </form>
