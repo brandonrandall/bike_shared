@@ -11,6 +11,7 @@
 <%@stations.each do |station|%>
 <%#= link_to "Edit", "/stations/#{station.id}/edit", class: "station_as_#{station.id}" %>
   <h3>Station Name: <%= station.name %></h3>
+
   <div class="station<%= station.id%>">
     <form action="/stations/<%= station.id%>/edit">
       <input type="submit" value="Edit">
