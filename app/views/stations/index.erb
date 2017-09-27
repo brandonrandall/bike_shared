@@ -1,6 +1,11 @@
 <h1 class='all_stations_title'>All Stations<h1>
   <h2>Station Count: <%= @stations_count %></h2>
-  <form class="new_button" action="/stations-dashboard">
+
+  <form class="new_station_button" action="/stations/new">
+    <input type="submit" value="Add New Station"/>
+  </form>
+
+  <form class="stations_dashboard_button" action="/stations-dashboard">
     <input type="submit" value="Stations Dashboard"/>
   </form>
 <%@stations.each do |station|%>
