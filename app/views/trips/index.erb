@@ -3,8 +3,12 @@
   <% @trips.each do |trip| %>
     <h3>Trip Duration: <%= trip.duration %></h3>
     <h3>Subscription Type: <%= trip.subscription_type %></h3>
+    <form action="/trips/<%= trip.id %>/edit">
+      <input type="submit" value="Edit">
+    </form>
+
   <% end %>
-  
+
 <form class="new_trip_button" action="/trips/new">
   <input type="submit" value="Create a Trip">
 </form>
