@@ -24,10 +24,9 @@ describe "When a user visits a trips page" do
     # expect(page).to have_content(trip1)
     expect(page).to have_content(trip2.duration)
     expect(page).to have_content(trip2.subscription_type)
-    save_and_open_page
   end
 
-  xit "they can see a trip" do
+  it "they can see a trip" do
     now = Time.now
     trip = Trip.create( duration: 60,
                         start_date: now,
@@ -38,9 +37,19 @@ describe "When a user visits a trips page" do
                         subscription_type: "Subscriber",
                         zip_code: 99000)
 
+    visit "/trips/#{trip.id}"
+
+    expect(page).to have_content(trip[:duration])
+    expect(page).to have_content(trip[:start_date])
+    expect(page).to have_content(trip[:start_station])
+    expect(page).to have_content(trip[:end_date])
+    expect(page).to have_content(trip[:end_station])
+    expect(page).to have_content(trip[:bike_id])
+    expect(page).to have_content(trip[:subscription_type])
+    expect(page).to have_content(trip[:zip_code])
   end
 
-  xit "they can create a trip" do
+  it "they can create a trip" do
     now = Time.now
     visit '/trips'
     click_on("Create a Trip")
