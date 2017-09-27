@@ -6,7 +6,10 @@
     <form action="/trips/<%= trip.id %>/edit">
       <input type="submit" value="Edit">
     </form>
-
+    <form action="/trips/<%= trip.id %>" method="post">
+      <input type='hidden' name='_method' value='DELETE'>
+      <input type="submit" value="Delete">
+    </form>
   <% end %>
 
 <form class="new_trip_button" action="/trips/new">

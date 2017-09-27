@@ -48,7 +48,7 @@ class BikeShareApp < Sinatra::Base
     @stations_with_most_bikes = Station.stations_with_most_bikes
     @stations_with_fewest_bikes = Station.stations_with_fewest_bikes
     @station_with_most_recent_installation = Station.station_with_most_recent_installation
-    @station_with_first_installation = Station.station_with_first_installation
+    @station_with_oldest_installation = Station.station_with_oldest_installation
     erb :"/stations/dashboard"
   end
 

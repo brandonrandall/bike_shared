@@ -8,7 +8,7 @@ class Station < ActiveRecord::Base
   validates :installation_date, presence: true
 
   def self.average_per_dock
-    average(:dock_count)
+    average(:dock_count).round(1)
   end
 
   def self.most_bikes_at_a_station
@@ -20,19 +20,19 @@ class Station < ActiveRecord::Base
   end
 
   def self.stations_with_most_bikes
-    where(dock_count: maximum(:dock_count)).map {|obj| obj.name }
+    where(dock_count: maximum(:dock_count)).map { |obj| obj.name }
   end
 
   def self.stations_with_fewest_bikes
-    where(dock_count: minimum(:dock_count)).map {|obj| obj.name }
+    where(dock_count: minimum(:dock_count)).map { |obj| obj.name }
   end
 
   def self.station_with_most_recent_installation
-    where(installation_date: maximum(:installation_date))
+    where(installation_date: maximum(:installation_date)).map { |obj| obj.name }.first
   end
 
-  def self.station_with_first_installation
-    where(installation_date: minimum(:installation_date))
+  def self.station_with_oldest_installation
+    where(installation_date: minimum(:installation_date)).map { |obj| obj.name }.first
   end
 
 end

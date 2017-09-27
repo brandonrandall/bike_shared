@@ -11,3 +11,8 @@
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete">
 </form>
+
+<form action="/trips/<%= @trip.id %>" method="post">
+  <input type='hidden' name='_method' value='DELETE'>
+  <input type="submit" value="Delete Trip">
+</form>
