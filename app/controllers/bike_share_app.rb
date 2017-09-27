@@ -1,5 +1,6 @@
 require 'will_paginate'
 require 'will_paginate/active_record'
+require 'pry'
 
 class BikeShareApp < Sinatra::Base
 
@@ -43,7 +44,11 @@ class BikeShareApp < Sinatra::Base
     @stations = Station.all
     @average_per_dock = Station.average_per_dock
     @most_bikes_at_a_station = Station.most_bikes_at_a_station
-    @station_with_most_bikes = Station.station_with_most_bikes
+    @fewest_bikes_at_a_station = Station.fewest_bikes_at_a_station
+    @stations_with_most_bikes = Station.stations_with_most_bikes
+    @stations_with_fewest_bikes = Station.stations_with_fewest_bikes
+    @station_with_most_recent_installation = Station.station_with_most_recent_installation
+    @station_with_first_installation = Station.station_with_first_installation
     erb :"/stations/dashboard"
   end
 

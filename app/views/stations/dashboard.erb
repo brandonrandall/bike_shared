@@ -1,4 +1,15 @@
 <h1>Total count of stations: <%= @stations.count %></h1>
 <h1>Average bikes available per station: <%= @average_per_dock %></h1>
+
 <h1>Most bikes available at a station: <%= @most_bikes_at_a_station %></h1>
-<h1>Station(s) where the most bikes are available: <%= @station_with_most_bikes %></h1>
+<h1>Station(s) where the most bikes are available: <% @stations_with_most_bikes.each do |station| %></h1>
+  <%= station %><br>
+<% end %>
+
+<h1>Fewest bikes available at a station: <%= @fewest_bikes_at_a_station %></h1>
+<h1>Station(s) where the fewest bikes are available: <% @stations_with_fewest_bikes.each do |station| %></h1>
+  <%= station %><br>
+<% end %>
+
+<h1>Station with most recent installation: <% @station_with_most_recent_installation %></h1>
+<h1>Station with first recent installation: <% @station_with_first_installation %></h1>

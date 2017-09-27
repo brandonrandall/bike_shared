@@ -15,8 +15,24 @@ class Station < ActiveRecord::Base
     maximum(:dock_count)
   end
 
-  def self.station_with_most_bikes
-    where(dock_count: maximum(:dock_count))
+  def self.fewest_bikes_at_a_station
+    minimum(:dock_count)
+  end
+
+  def self.stations_with_most_bikes
+    where(dock_count: maximum(:dock_count)).map {|obj| obj.name }
+  end
+
+  def self.stations_with_fewest_bikes
+    where(dock_count: minimum(:dock_count)).map {|obj| obj.name }
+  end
+
+  def self.station_with_most_recent_installation
+    where(installation_date: maximum(:installation_date))
+  end
+
+  def self.station_with_first_installation
+    where(installation_date: minimum(:installation_date))
   end
 
 end
