@@ -100,4 +100,34 @@ describe "When a user visits a trips page" do
     expect(current_path).to eq("/trips/#{trip.id}")
     expect(page).to have_content("Duration: 100")
   end
+
+  it "they can delete a trip" do
+    trip1 = Trip.create( duration: 100,
+                        start_date: now,
+                        start_station: 1,
+                        end_date: now + 60*60,
+                        end_station: 1,
+                        bike_id: 400,
+                        subscription_type: "Subscriber",
+                        zip_code: 99000)
+    trip2 = Trip.create( duration: 60,
+                        start_date: now,
+                        start_station: 1,
+                        end_date: now + 60*60,
+                        end_station: 1,
+                        bike_id: 400,
+                        subscription_type: "Subscriber",
+                        zip_code: 99000)
+    trip_count = Trip.all.count
+
+    visit "/trips/#{trip2.id}"
+    click_on("Delete")
+
+    new_trip_count = Trip.all.count
+
+    expect(current_path).to eq("/trips")
+    expect(page).not_to have_content(trip2.duration)
+    expect(page).to have_content(trip1.duration)
+    expect(page).to have_content("Trip Count: #{new_trip_count}")
+  end
 end
