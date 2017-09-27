@@ -21,9 +21,10 @@ describe "When a user visits a trips page" do
                         zip_code: 99000)
     visit '/trips'
     expect(current_path).to eq('/trips')
-    expect(page).to have_content(trip1)
+    # expect(page).to have_content(trip1)
     expect(page).to have_content(trip2.duration)
     expect(page).to have_content(trip2.subscription_type)
+    save_and_open_page
   end
 
   xit "they can see a trip" do
