@@ -1,0 +1,24 @@
+<h1 class='all_stations_title'>All Stations<h1>
+  <h2>Station Count: <%= @stations_count %></h2>
+
+  <form class="new_station_button" action="/stations/new">
+    <input type="submit" value="Add New Station"/>
+  </form>
+
+  <form class="stations_dashboard_button" action="/stations-dashboard">
+    <input type="submit" value="Stations Dashboard"/>
+  </form>
+<%@stations.each do |station|%>
+<%#= link_to "Edit", "/stations/#{station.id}/edit", class: "station_as_#{station.id}" %>
+  <h3>Station Name: <%= station.name %></h3>
+
+  <div class="station<%= station.id%>">
+    <form action="/stations/<%= station.id%>/edit">
+      <input type="submit" value="Edit">
+    </form>
+    <form action="/stations/<%= station.id %>" method="post">
+      <input type='hidden' name='_method' value='DELETE'>
+      <input type="submit" value="Delete Station">
+    </form>
+  </div>
+<% end %>
