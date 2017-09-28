@@ -4,6 +4,8 @@ require 'pry'
 
 class BikeShareApp < Sinatra::Base
 
+  include WillPaginate::Sinatra::Helpers
+
   get '/stations' do
     @stations = Station.all
     @stations_count = Station.all.count
@@ -53,7 +55,8 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trips = Trip.all
+    # @trips = Trip.order("installation_date").page(params[:page]).per_page(30)
+    @trips = Trip.paginate(:page => params[:page], per_page: 30)
     @trip_count = Trip.all.count
     erb :"/trips/index"
   end

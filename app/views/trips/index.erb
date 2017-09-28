@@ -1,8 +1,27 @@
 <h1 class='all_trips_title'>All Trips</h1>
   <h2>Trip Count: <%= @trip_count %></h2>
+  <form action="/trips" method="post">
+    **need to add logic stating if on first or last page
+    to grey out the previous/next
+    **also need to send these to the correct routes
+    <input type="submit" value="Previous">
+    <input type="submit" value="Next">
+  </form>
+  <form class="new_station_button" action="/stations/new">
+    <input type="submit" value="Add New Station"/>
+  </form>
+  <form class="new_trip_button" action="/trips/new">
+    <input type="submit" value="Create a Trip">
+  </form>
   <% @trips.each do |trip| %>
+  <form action="/trips/<%= trip.id %>">
+    <input type="submit" value="View Station">
+  </form>
     <h3>Trip Duration: <%= trip.duration %></h3>
+    <h3>Start Station: <%= trip.start_station %></h3>
+    <h3>Start Date: <%= trip.start_date %></h3>
     <h3>Subscription Type: <%= trip.subscription_type %></h3>
+    <h3>Zip Code: <%= trip.zip_code %></h3>
     <form action="/trips/<%= trip.id %>/edit">
       <input type="submit" value="Edit">
     </form>
@@ -11,7 +30,4 @@
       <input type="submit" value="Delete">
     </form>
   <% end %>
-
-<form class="new_trip_button" action="/trips/new">
-  <input type="submit" value="Create a Trip">
-</form>
+<%= will_paginate @trips %>

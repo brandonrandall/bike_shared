@@ -17,6 +17,4 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'rack-test'
-  gem 'will_paginate', '~> 3.1.1'
-
 end
