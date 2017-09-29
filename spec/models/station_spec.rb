@@ -25,7 +25,7 @@ RSpec.describe Station do
                       city: "Denver",
                       installation_date: Date.today + num)
     end
-    average = Station.all.map(&:dock_count).reduce(:+)/Station.count
+    average = Station.all.map(&:dock_count).reduce(:+)/Station.count.to_f
     average_per_dock = Station.average_per_dock
     expect(average).to eq(average_per_dock)
     # binding.pry
