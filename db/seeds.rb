@@ -13,11 +13,11 @@ CSV.foreach('db/csv/bike_stations.csv', headers: true) do |row|
 end
 
 CSV.foreach('db/csv/trip.csv', headers: true) do |row|
-  Trip.create!({
+  Trip.create({
   duration: row["duration"],
-  start_date: ("00/00/0000" if row["start_date"] == nil),
+  start_date: row["start_date"].split(' ').first,
   start_station: row["start_station_name"],
-  end_date: ("00/00/0000" if row["end_date"] == nil),
+  end_date: row["end_date"].split(' ').first,
   end_station: row["end_station_name"],
   bike_id: row["bike_id"],
   subscription_type: row["subscription_type"],

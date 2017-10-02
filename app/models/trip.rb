@@ -29,8 +29,20 @@ class Trip < ActiveRecord::Base
   end
 
   def self.number_of_rides_for_each_month
-    # count(:start_date)
-    group('trips.start_date.month')
+    #need to find the years through inquiries
+    years = [2013,2014,2015]
+    years.map do |year|
+      #again, why cant this hash use symbol notation to
+      #create the years?
+      {year =>
+        Trip.where('extract(year from start_date) = ?', year)
+        .group('extract(month from start_date)')
+        .count(:id)
+      }
+      # result..map do |year, months|
+      #   year.map do |k,v|
+      #   end
+    end
   end
 
 end

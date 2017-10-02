@@ -135,13 +135,34 @@ RSpec.describe Trip do
   end
 
   it "returns a month to month / yearly breakdown of rides" do
-    now = Date.today
-
-    15.times do |num|
+    twenty_13 = Date.today << 48
+    twenty_14  = Date.today << 36
+    twenty_15  = Date.today << 24
+    6.times do |num|
       Trip.create(duration: (num) + 45,
-                  start_date: now + (num*30),
+                  start_date: twenty_13 + (num*30),
                   start_station: (num) + 1,
-                  end_date: now + 60*60,
+                  end_date: twenty_13 + 60*60,
+                  end_station: 1,
+                  bike_id: 400,
+                  subscription_type: "Subscriber",
+                  zip_code: 99999)
+    end
+    5.times do |num|
+      Trip.create(duration: (num) + 45,
+                  start_date: twenty_14 + (num*30),
+                  start_station: (num) + 1,
+                  end_date: twenty_14 + 60*60,
+                  end_station: 1,
+                  bike_id: 400,
+                  subscription_type: "Subscriber",
+                  zip_code: 99999)
+    end
+    4.times do |num|
+      Trip.create(duration: (num) + 45,
+                  start_date: twenty_15 + (num*30),
+                  start_station: (num) + 1,
+                  end_date: twenty_15 + 60*60,
                   end_station: 1,
                   bike_id: 400,
                   subscription_type: "Subscriber",

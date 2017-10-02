@@ -1,5 +1,15 @@
 <h1 class='all_trips_title'>All Trips</h1>
+
   <h2>Trip Count: <%= @trip_count %></h2>
+
+  <h2>Number of Rides for Each Month <% @number_of_rides_for_each_month.map do |year, months| %></h2>
+    <% year.map do |k,v| %>
+    <h3><%= k %> : <% v.map do |month,rides| %></h3>
+      <h4><%= month %> had <%= rides %> rides</h4>
+      <% end %>
+    <% end %>
+  <% end %>
+
   <form action="/trips" method="post">
     **need to add logic stating if on first or last page
     to grey out the previous/next

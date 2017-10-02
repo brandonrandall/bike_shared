@@ -58,6 +58,7 @@ class BikeShareApp < Sinatra::Base
     # @trips = Trip.order("installation_date").page(params[:page]).per_page(30)
     @trips = Trip.paginate(:page => params[:page], per_page: 30)
     @trip_count = Trip.all.count
+    @number_of_rides_for_each_month = Trip.number_of_rides_for_each_month
     erb :"/trips/index"
   end
 
