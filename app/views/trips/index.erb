@@ -1,43 +1,116 @@
+<nav>
+  <style media="screen">
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: grey;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 20px 20px;
+        text-decoration: none;
+    }
+    li a:hover {
+        background-color: dark-grey;
+    }
+  </style>
+
+  <ul id='container'>
+    <li>
+    <%#= <a href="/">Home</a> %>
+    </li>
+    <li>
+      <a href="/stations">Stations</a>
+    </li>
+    <li>
+      <a href="/conditions">Weather Conditions</a>
+    </li>
+    <li>
+      <a href="/trips">Trips</a>
+    </li>
+    <li style="float:right">
+      <h1>Brandon's Bike Share</h1>
+    </li>
+  </ul>
+</nav>
+
+<style media="screen">
+  body {
+    background-image: url("bike images4.jpg");
+    background-attachment: fixed;
+    margin: 0;
+  }
+</style>
+
+<p>
+<style>
+  table-u {
+      margin: 0 auto;
+      background: white;
+      padding-bottom: 20px;
+      padding-left: 80px;
+      padding-right: 80px;
+      padding-top: 20px;
+      border: 10px solid black;
+      color: black
+    }
+</style>
+
 <h1 class='all_trips_title'>All Trips</h1>
+<h2>Trip Count: <%= @trip_count %></h2>
+<h2>Number of Rides for Each Month <% @number_of_rides_for_each_month.map do |year, months| %></h2>
+  <% year.map do |k,v| %>
+  <h3><%= k %> : <% v.map do |month,rides| %></h3>
+  <h4><%= month %> had <%= rides %> rides</h4>
+  <% end %>
+  <% end %>
+  <% end %>
 
-  <h2>Trip Count: <%= @trip_count %></h2>
 
-  <h2>Number of Rides for Each Month <% @number_of_rides_for_each_month.map do |year, months| %></h2>
-    <% year.map do |k,v| %>
-    <h3><%= k %> : <% v.map do |month,rides| %></h3>
-      <h4><%= month %> had <%= rides %> rides</h4>
-      <% end %>
+    <form action="/trips" method="post">
+      **need to add logic stating if on first or last page
+      to grey out the previous/next
+      **also need to send these to the correct routes
+      <input type="submit" value="Previous">
+      <input type="submit" value="Next">
+    </form>
+
+    <form class="new_station_button" action="/stations/new">
+      <input type="submit" value="Add New Station"/>
+    </form>
+
+    <form class="new_trip_button" action="/trips/new">
+      <input type="submit" value="Create a Trip">
+    </form>
+
+    <table-u>
+    <% @trips.each do |trip| %>
+    <form action="/trips/<%= trip.id %>">
+      <input type="submit" value="View Station">
+    </form>
+      <h3>Trip Duration: <%= trip.duration %></h3>
+      <h3>Start Station: <%= trip.start_station %></h3>
+      <h3>Start Date: <%= trip.start_date %></h3>
+      <h3>Subscription Type: <%= trip.subscription_type %></h3>
+      <h3>Zip Code: <%= trip.zip_code %></h3>
+    </table-u>
+      <form action="/trips/<%= trip.id %>/edit">
+        <input type="submit" value="Edit">
+      </form>
+      <form action="/trips/<%= trip.id %>" method="post">
+        <input type='hidden' name='_method' value='DELETE'>
+        <input type="submit" value="Delete">
+      </form>
     <% end %>
-  <% end %>
 
-  <form action="/trips" method="post">
-    **need to add logic stating if on first or last page
-    to grey out the previous/next
-    **also need to send these to the correct routes
-    <input type="submit" value="Previous">
-    <input type="submit" value="Next">
-  </form>
-  <form class="new_station_button" action="/stations/new">
-    <input type="submit" value="Add New Station"/>
-  </form>
-  <form class="new_trip_button" action="/trips/new">
-    <input type="submit" value="Create a Trip">
-  </form>
-  <% @trips.each do |trip| %>
-  <form action="/trips/<%= trip.id %>">
-    <input type="submit" value="View Station">
-  </form>
-    <h3>Trip Duration: <%= trip.duration %></h3>
-    <h3>Start Station: <%= trip.start_station %></h3>
-    <h3>Start Date: <%= trip.start_date %></h3>
-    <h3>Subscription Type: <%= trip.subscription_type %></h3>
-    <h3>Zip Code: <%= trip.zip_code %></h3>
-    <form action="/trips/<%= trip.id %>/edit">
-      <input type="submit" value="Edit">
-    </form>
-    <form action="/trips/<%= trip.id %>" method="post">
-      <input type='hidden' name='_method' value='DELETE'>
-      <input type="submit" value="Delete">
-    </form>
-  <% end %>
-<%= will_paginate @trips %>
+  <%= will_paginate @trips %>
+</p>

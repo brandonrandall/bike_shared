@@ -1,24 +1,76 @@
-<h1 class='all_stations_title'>All Stations<h1>
-  <h2>Station Count: <%= @stations_count %></h2>
+<nav>
+  <style media="screen">
+  ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: grey;
+  }
 
-  <form class="new_station_button" action="/stations/new">
-    <input type="submit" value="Add New Station"/>
-  </form>
+  li {
+      float: left;
+  }
 
-  <form class="stations_dashboard_button" action="/stations-dashboard">
-    <input type="submit" value="Stations Dashboard"/>
-  </form>
-<%@stations.each do |station|%>
-<%#= link_to "Edit", "/stations/#{station.id}/edit", class: "station_as_#{station.id}" %>
-  <h3>Station Name: <%= station.name %></h3>
+  li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 20px 20px;
+      text-decoration: none;
+  }
+  li a:hover {
+      background-color: dark-grey;
+  }
+  </style>
+  <ul id='container'>
+    <li>
+    <%#= <a href="/">Home</a> %>
+    </li>
+    <li>
+      <a href="/stations">Stations</a>
+    </li>
+    <li>
+      <a href="/conditions">Weather Conditions</a>
+    </li>
+    <li>
+      <a href="/trips">Trips</a>
+    </li>
+    <li style="float:right">
+      <h1>Brandon's Bike Share</h1>
+    </li>
+  </ul>
+</nav>
+<style media="screen">
+body {
+  background-image: url("stations2.jpg");
+  background-attachment: fixed;
+  margin: 0;
+}
+</style>
+<body>
+  <h1 class='all_stations_title'>All Stations<h1>
+    <h2>Station Count: <%= @stations_count %></h2>
 
-  <div class="station<%= station.id%>">
-    <form action="/stations/<%= station.id%>/edit">
-      <input type="submit" value="Edit">
+    <form class="new_station_button" action="/stations/new">
+      <input type="submit" value="Add New Station"/>
     </form>
-    <form action="/stations/<%= station.id %>" method="post">
-      <input type='hidden' name='_method' value='DELETE'>
-      <input type="submit" value="Delete Station">
+
+    <form class="stations_dashboard_button" action="/stations-dashboard">
+      <input type="submit" value="Stations Dashboard"/>
     </form>
-  </div>
+  <%@stations.each do |station|%>
+  <%#= link_to "Edit", "/stations/#{station.id}/edit", class: "station_as_#{station.id}" %>
+    <h3>Station Name: <%= station.name %></h3>
+
+    <div class="station<%= station.id%>">
+      <form action="/stations/<%= station.id%>/edit">
+        <input type="submit" value="Edit">
+      </form>
+      <form action="/stations/<%= station.id %>" method="post">
+        <input type='hidden' name='_method' value='DELETE'>
+        <input type="submit" value="Delete Station">
+      </form>
+    </div>
+  </body>
 <% end %>
