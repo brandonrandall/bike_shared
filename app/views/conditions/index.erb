@@ -1,7 +1,69 @@
-<h1>All Conditions</h1>
-<% @conditions.each do |condition| %>
-  Date: <%= condition.date %><br>
-  Precipitaion: <%= condition.precipitation %>
-  Mean Temperature: <%= condition.mean_temp %><br>
-<% end %>
-<%= will_paginate @conditions %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Brandon's Bike Share</title>
+    <nav>
+      <style media="screen">
+      ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: grey;
+      }
+
+      li {
+          float: left;
+      }
+
+      li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 20px 20px;
+          text-decoration: none;
+      }
+      li a:hover {
+          background-color: dark-grey;
+      }
+      </style>
+      <ul id='container'>
+        <li>
+        <%#= <a href="/">Home</a> %>
+        </li>
+        <li>
+          <a href="/stations">Stations</a>
+        </li>
+        <li>
+          <a href="/conditions">Weather Conditions</a>
+        </li>
+        <li>
+          <a href="/trips">Trips</a>
+        </li>
+        <li style="float:right">
+          <h1>Brandon's Bike Share</h1>
+        </li>
+      </ul>
+    </nav>
+  </head>
+  <body>
+    <style media="screen">
+    body {
+      background-image: url("bike images1.jpg");
+      background-attachment: fixed;
+      margin: 0;
+    }
+    </style>
+    <h1>All Conditions</h1>
+    <form class="new_condition_button" action="/conditions/new" >
+      <input type="submit" value="Add a Condition">
+    </form>
+    <% @conditions.each do |condition| %>
+      Date: <%= condition.date %><br>
+      Precipitaion: <%= condition.precipitation %>
+      Mean Temperature: <%= condition.mean_temp %><br>
+    <% end %>
+    <%= will_paginate @conditions %>
+  </body>
+</html>
