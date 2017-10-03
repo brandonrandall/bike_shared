@@ -6,7 +6,6 @@ describe "when a user visits Trips dashboard" do
   let(:longest_ride) { Station.longest_ride }
   let(:shortest_ride) { Station.shortest_ride }
   # let(:stn_with_most_rides_as_a_starting_point)
-  # let(:stn_with_most_rides_as_an_ending_point)
   # let(:number_of_rides_for_each_month)
   # let(:number_of_rides_for_each_year)
   # let(:most_ridden_bike_with_number_of_rides)

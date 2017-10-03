@@ -1,0 +1,7 @@
+<h1>All Conditions</h1>
+<% @conditions.each do |condition| %>
+  Date: <%= condition.date %><br>
+  Precipitaion: <%= condition.precipitation %>
+  Mean Temperature: <%= condition.mean_temp %><br>
+<% end %>
+<%= will_paginate @conditions %>

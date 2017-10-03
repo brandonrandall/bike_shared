@@ -92,4 +92,14 @@ class BikeShareApp < Sinatra::Base
     redirect '/trips'
   end
 
+  get '/conditions' do
+    @conditions = Condition.all
+    @conditions = Condition.paginate(:page => params[:page], per_page: 30)
+    erb :"/conditions/index"
+  end
+
+  get '/conditions/new' do
+    @condition = Condition.new
+    erb :"/conditions/new"
+  end
 end
