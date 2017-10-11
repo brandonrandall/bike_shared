@@ -1,10 +1,9 @@
-<link rel='stylesheet' href='stylez.css'/>
+<link rel='stylesheet' href='styley.css'/>
 
 <nav>
   <ul id='nav-bar'>
     <li>
-      <%#HEX VALUES!!!  %>
-    <%#= <a href="/">Home</a> %>
+      <a href="/">Home</a>
     </li>
     <li>
       <a href="/stations">Stations</a>
@@ -21,14 +20,8 @@
   </ul>
 </nav>
 
-  <body>
-    <style media="screen">
-    body {
-      background-image: url("bike images1.jpg");
-      background-attachment: fixed;
-      margin: 0;
-    }
-    </style>
+    <div class="all-conditions">
+
     <h1>All Conditions</h1>
     <form class="new_condition_button" action="/conditions/new" >
       <input type="submit" value="Add a Condition">
@@ -39,5 +32,5 @@
       Mean Temperature: <%= condition.mean_temp %><br>
     <% end %>
     <%= will_paginate @conditions %>
-  </body>
+    </div>
 </html>
