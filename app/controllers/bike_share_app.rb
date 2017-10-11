@@ -6,6 +6,10 @@ class BikeShareApp < Sinatra::Base
 
   include WillPaginate::Sinatra::Helpers
 
+  get '/' do
+    erb :"/welcome/index"
+  end
+
   get '/stations' do
     @stations = Station.all
     @stations_count = Station.all.count

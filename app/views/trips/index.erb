@@ -3,8 +3,7 @@
 <nav>
   <ul id='nav-bar'>
     <li>
-      <%#HEX VALUES!!!  %>
-    <%#= <a href="/">Home</a> %>
+      <a href="/">Home</a>
     </li>
     <li>
       <a href="/stations">Stations</a>
@@ -20,8 +19,26 @@
     </li>
   </ul>
 </nav>
-
   <div class="all-trips">
+
+    <form action="/trips" method="post">
+      <input type="submit" value="Previous">
+      #NEED TO CHANGE NUMBERS TO MONTHS
+      #WHY DOES THE BACKGROUND PIC NOT CHANGE ON THIS PAGE? <br>
+      **need to add logic stating if on first or last page
+      to grey out the previous/next <br>
+      **need to style the each-trip below <br>
+      <input type="submit" value="Next">
+    </form>
+
+    <form class="new_station_button" action="/stations/new">
+      <input type="submit" value="Add New Station"/>
+    </form>
+
+    <form class="new_trip_button" action="/trips/new">
+      <input type="submit" value="Create a Trip">
+    </form>
+
     <h1 class='all_trips_title'>All Trips</h1>
     <h2>Trip Count: <%= @trip_count %></h2>
   </div>
@@ -36,25 +53,9 @@
     <% end %>
   </div>
 
-  <div class="footer-years">
-    <form action="/trips" method="post">
-      <input type="submit" value="Previous">
-      **need to add logic stating if on first or last page
-      to grey out the previous/next
-      **also need to send these to the correct routes
-      <input type="submit" value="Next">
-    </form>
-  </div>
-
-    <form class="new_station_button" action="/stations/new">
-      <input type="submit" value="Add New Station"/>
-    </form>
-
-    <form class="new_trip_button" action="/trips/new">
-      <input type="submit" value="Create a Trip">
-    </form>
 
     <% @trips.each do |trip| %>
+    <div id="each-trip">
 
     <form action="/trips/<%= trip.id %>">
       <input type="submit" value="View Station">
@@ -74,6 +75,7 @@
         <input type='hidden' name='_method' value='DELETE'>
         <input type="submit" value="Delete">
       </form>
+    </div>
     <% end %>
 
   <%= will_paginate @trips %>

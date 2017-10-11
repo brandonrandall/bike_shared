@@ -1,10 +1,9 @@
-<link rel='stylesheet' href='stylez.css'/>
+<link rel='stylesheet' href='stylex.css'/>
 
 <nav>
   <ul id='nav-bar'>
     <li>
-      <%#HEX VALUES!!!  %>
-    <%#= <a href="/">Home</a> %>
+      <a href="/">Home</a>
     </li>
     <li>
       <a href="/stations">Stations</a>
@@ -21,14 +20,8 @@
   </ul>
 </nav>
 
-<style media="screen">
-body {
-  background-image: url("stations2.jpg");
-  background-attachment: fixed;
-  margin: 0;
-}
-</style>
-<body>
+<div class="all-stations">
+
   <h1 class='all_stations_title'>All Stations<h1>
     <h2>Station Count: <%= @stations_count %></h2>
 
@@ -39,18 +32,19 @@ body {
     <form class="stations_dashboard_button" action="/stations-dashboard">
       <input type="submit" value="Stations Dashboard"/>
     </form>
+
   <%@stations.each do |station|%>
-  <%#= link_to "Edit", "/stations/#{station.id}/edit", class: "station_as_#{station.id}" %>
     <h3>Station Name: <%= station.name %></h3>
 
-    <div class="station<%= station.id%>">
+
       <form action="/stations/<%= station.id%>/edit">
         <input type="submit" value="Edit">
       </form>
+
       <form action="/stations/<%= station.id %>" method="post">
         <input type='hidden' name='_method' value='DELETE'>
         <input type="submit" value="Delete Station">
       </form>
-    </div>
-  </body>
+  </div>
+
 <% end %>
