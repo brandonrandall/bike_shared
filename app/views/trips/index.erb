@@ -1,7 +1,7 @@
-<link rel='stylesheet' href='stylez.css'/>
+<link rel='stylesheet' href='dtrips.css'/>
 
-<nav>
-  <ul id='nav-bar'>
+<div>
+  <ul class='nav-bar'>
     <li>
       <a href="/">Home</a>
     </li>
@@ -18,64 +18,70 @@
       <h1>TRIPS</h1>
     </li>
   </ul>
-</nav>
-  <div class="all-trips">
+</div>
+<h1>NEED TO MAKE THE TEXT ORANGE?</h1>
+<h1>NEED TO CENTER THE DATA</h1>
+<h1>NEED TO PUT SOME DATA IN THE CONCRETE</h1>
+<div class="trips-page">
 
-    <form action="/trips" method="post">
-      <input type="submit" value="Previous">
-      #NEED TO CHANGE NUMBERS TO MONTHS
-      #WHY DOES THE BACKGROUND PIC NOT CHANGE ON THIS PAGE? <br>
-      **need to add logic stating if on first or last page
-      to grey out the previous/next <br>
-      **need to style the each-trip below <br>
-      <input type="submit" value="Next">
-    </form>
+  <form class="prev-button" action="/trips" method="post">
+    <input type="submit" value="Previous">
+  </form>
+    #NEED TO CHANGE NUMBERS TO MONTHS
+    #WHY DOES THE BACKGROUND PIC NOT CHANGE ON THIS PAGE? <br>
+    **need to add logic stating if on first or last page
+    to grey out the previous/next <br>
+    **need to style the each-trip below <br>
+  <form class="next-button" action="/trips" method="post">
+    <input type="submit" value="Next">
+  </form>
 
-    <form class="new_station_button" action="/stations/new">
-      <input type="submit" value="Add New Station"/>
-    </form>
+      <form class="new_station_button" action="/stations/new">
+        <input type="submit" value="Add New Station"/>
+      </form>
 
-    <form class="new_trip_button" action="/trips/new">
-      <input type="submit" value="Create a Trip">
-    </form>
+      <form class="new_trip_button" action="/trips/new">
+        <input type="submit" value="Create a Trip">
+      </form>
 
-    <h1 class='all_trips_title'>All Trips</h1>
-    <h2>Trip Count: <%= @trip_count %></h2>
-  </div>
+      <h1 class='all_trips_title'>All Trips</h1>
+      <h2>Trip Count: <%= @trip_count %></h2>
 
-  <div class="years-table">
-    <h2>Number of Rides for Each Month <% @number_of_rides_for_each_month.map do |year, months| %></h2>
-      <% year.map do |k,v| %>
-      <h3><%= k %> : <% v.map do |month,rides| %></h3>
-        <h4><%= month %> had <%= rides %> rides</h4>
+    <div class="years-table">
+      <h2>Number of Rides for Each Month <% @number_of_rides_for_each_month.map do |year, months| %></h2>
+        <% year.map do |k,v| %>
+        <h3><%= k %> : <% v.map do |month,rides| %></h3>
+          <h4><%= month %> had <%= rides %> rides</h4>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
 
 
     <% @trips.each do |trip| %>
-    <div id="each-trip">
+      <div id="each-trip">
 
-    <form action="/trips/<%= trip.id %>">
-      <input type="submit" value="View Station">
-    </form>
-
-      <h3>Trip Duration: <%= trip.duration %></h3>
-      <h3>Start Station: <%= trip.start_station %></h3>
-      <h3>Start Date: <%= trip.start_date %></h3>
-      <h3>Subscription Type: <%= trip.subscription_type %></h3>
-      <h3>Zip Code: <%= trip.zip_code %></h3>
-
-      <form action="/trips/<%= trip.id %>/edit">
-        <input type="submit" value="Edit">
+      <form action="/trips/<%= trip.id %>">
+        <input type="submit" value="View Station">
       </form>
 
-      <form action="/trips/<%= trip.id %>" method="post">
-        <input type='hidden' name='_method' value='DELETE'>
-        <input type="submit" value="Delete">
-      </form>
-    </div>
-    <% end %>
+        <h3>Trip Duration: <%= trip.duration %></h3>
+        <h3>Start Station: <%= trip.start_station %></h3>
+        <h3>Start Date: <%= trip.start_date %></h3>
+        <h3>Subscription Type: <%= trip.subscription_type %></h3>
+        <h3>Zip Code: <%= trip.zip_code %></h3>
 
-  <%= will_paginate @trips %>
+        <form action="/trips/<%= trip.id %>/edit">
+          <input type="submit" value="Edit">
+        </form>
+
+        <form action="/trips/<%= trip.id %>" method="post">
+          <input type='hidden' name='_method' value='DELETE'>
+          <input type="submit" value="Delete">
+        </form>
+      </div>
+      <% end %>
+
+    <%= will_paginate @trips %>
+  </div>
+</div>
