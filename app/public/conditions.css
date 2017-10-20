@@ -1,9 +1,9 @@
-#nav-bar {
+.nav-bar {    
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: grey;
+  background-color: maroon;
   position: fixed;
   top: 0;
   width: 100%;
@@ -15,7 +15,7 @@ nav-bar ul {
 }
 
 body {
-  background-image: url("bike images3.jpg");
+  background-image: url("conditionsimage1.jpg");
   background-attachment: fixed;
   margin: 0;
 }
@@ -38,42 +38,30 @@ li a {
 }
 
 li a:hover {
-    background-color: #555555;
+    background-color: blue;
 }
 
-.all-trips {
-    margin: 0 auto;
-    border-style: groove;
-    background: none;
-    padding-bottom: 20px;
-    padding-left: 80px;
-    padding-right: 80px;
-    padding-top: 20px;
-    border: 10px solid grey;
-    color: white;
-    position: relative;
-    top: 58px;
-    text-align: center;
-    color: white;
-  }
-
-.years-table {
-  margin: 0 auto;
-  border-style: groove;
-  background: none;
-  padding-bottom: 20px;
-  padding-left: 80px;
-  padding-right: 80px;
-  padding-top: 20px;
-  border: 10px solid grey;
+.conditions-page {
   position: relative;
-  top: 50;
-  text-align: center;
-  color: white
+  top: 60px;
+  border: 20px dashed maroon;
 }
 
-#each-trip {
-  margin: 0 auto;
+.conditions-page_new_condition_button {
+  text-align: center;
+}
+
+.each-condition {
+  /*should alphabetize*/
+  /*implement opacity*/
+  margin-bottom: 20px;
+  text-align: center;
+  border: dashed maroon 2px;
+  padding: 10px 0;
+  width: 45%;
+  margin: auto auto 10px;
+  color: white;
+  /*margin: 0 auto;
   border-style: groove;
   background: none;
   padding-bottom: 20px;
@@ -84,6 +72,14 @@ li a:hover {
   color: white;
   position: relative;
   top: 50;
+  color: white*/
+}
+.paginate {
+  margin-bottom: 20px;
   text-align: center;
-  color: white
+  border: dashed white 2px;
+  padding: 10px 0;
+  width: 80%;
+  margin: auto auto 10px;
+  color: white;
 }

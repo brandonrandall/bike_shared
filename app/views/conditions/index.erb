@@ -1,7 +1,7 @@
-<link rel='stylesheet' href='styley.css'/>
+<link rel='stylesheet' href='conditions.css'/>
 
-<nav>
-  <ul id='nav-bar'>
+<div>
+  <ul class='nav-bar'>
     <li>
       <a href="/">Home</a>
     </li>
@@ -18,19 +18,21 @@
       <h1>CONDITIONS</h1>
     </li>
   </ul>
-</nav>
+</div>
 
-    <div class="all-conditions">
+<div class="conditions-page">
+  <form class="conditions-page_new_condition_button" action="/conditions/new" >
+    <input type="submit" value="Add a Condition">
+  </form>
 
-    <h1>All Conditions</h1>
-    <form class="new_condition_button" action="/conditions/new" >
-      <input type="submit" value="Add a Condition">
-    </form>
-    <% @conditions.each do |condition| %>
+  <% @conditions.each do |condition| %>
+    <div class="each-condition">
       Date: <%= condition.date %><br>
       Precipitaion: <%= condition.precipitation %>
       Mean Temperature: <%= condition.mean_temp %><br>
-    <% end %>
-    <%= will_paginate @conditions %>
     </div>
-</html>
+  <% end %>
+  <div class="paginate">
+    <%= will_paginate @conditions %>
+  </div>
+</div>

@@ -96,6 +96,11 @@ class BikeShareApp < Sinatra::Base
     redirect '/trips'
   end
 
+  get '/trips-dashboard' do
+    @most_trips_for_a_day =  Trip.most_trips_for_a_day
+    erb :"/trips/dashboard"
+  end
+
   get '/conditions' do
     @conditions = Condition.all
     @conditions = Condition.paginate(:page => params[:page], per_page: 30)
@@ -110,5 +115,10 @@ class BikeShareApp < Sinatra::Base
   post '/conditions' do
     @condition = Condition.create(params[:condition])
     redirect "/conditions/#{@condition.id}"
+  end
+
+  get '/conditions-dashboard' do
+    @trips = Trip.all
+    erb :"/conditions/dashboard"
   end
 end

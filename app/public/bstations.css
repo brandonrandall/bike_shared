@@ -1,9 +1,9 @@
-#nav-bar {
+.stations-nav-bar {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: grey;
+  background-color: blue;
   position: fixed;
   top: 0;
   width: 100%;
@@ -38,10 +38,10 @@ li a {
 }
 
 li a:hover {
-    background-color: #555555;
+    background-color: black;
 }
 
-.all-stations {
+/*.all-stations {
     margin: 0 auto;
     border-style: groove;
     background: none;
@@ -54,4 +54,4 @@ li a:hover {
     top: 58px;
     text-align: center;
     color: white;
-  }
+  }*/
