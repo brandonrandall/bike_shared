@@ -43,11 +43,20 @@ class Trip < ActiveRecord::Base
 
   def self.most_trips_for_a_day
 
-    #LOOK AT GROUP 
+    #LOOK AT GROUP
 
     start_dates = Trip.distinct.pluck(:start_date)
     days_with_trips = start_dates.map {|start_date| [start_date,Trip.where(start_date: start_date).count]}
     days_with_trips.max_by { |day| day[1]}[1]
+  end
+
+  def self.least_trips_for_a_day
+
+    #LOOK AT GROUP
+
+    start_dates = Trip.distinct.pluck(:start_date)
+    days_with_trips = start_dates.map {|start_date| [start_date,Trip.where(start_date: start_date).count]}
+    days_with_trips.min_by { |day| day[1]}[1]
   end
 
 end

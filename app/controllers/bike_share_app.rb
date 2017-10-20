@@ -98,6 +98,7 @@ class BikeShareApp < Sinatra::Base
 
   get '/trips-dashboard' do
     @most_trips_for_a_day =  Trip.most_trips_for_a_day
+    @least_trips_for_a_day = Trip.least_trips_for_a_day
     erb :"/trips/dashboard"
   end
 
@@ -118,7 +119,6 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/conditions-dashboard' do
-    @trips = Trip.all
     erb :"/conditions/dashboard"
   end
 end
