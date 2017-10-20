@@ -99,6 +99,9 @@ class BikeShareApp < Sinatra::Base
   get '/trips-dashboard' do
     @most_trips_for_a_day =  Trip.most_trips_for_a_day
     @least_trips_for_a_day = Trip.least_trips_for_a_day
+    @high_on_most_trips_day = Condition.high_on_most_trips_day
+    @low_on_most_trips_day = Condition.low_on_most_trips_day
+    # @weather_on_least_trips_day = Condition.weather_on_least_trips_day
     erb :"/trips/dashboard"
   end
 
