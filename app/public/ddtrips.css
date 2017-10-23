@@ -45,50 +45,32 @@ li a:hover {
   position: relative;
   top: 60px;
 }
-/*
+
+.trips-buttons {
+  position: left;
+  border: #FF5733 solid 10px;
+  color: white;
+}
+
 .all-trips {
-    margin: 0 auto;
-    border-style: groove;
-    background: none;
-    padding-bottom: 20px;
-    padding-left: 80px;
-    padding-right: 80px;
-    padding-top: 20px;
-    border: 10px solid grey;
-    color: white;
+    border: 10px solid white;
     position: relative;
-    top: 58px;
-    text-align: center;
+    text-align: left;
     color: white;
   }
 
 .years-table {
-  margin: 0 auto;
-  border-style: groove;
-  background: none;
-  padding-bottom: 20px;
-  padding-left: 80px;
-  padding-right: 80px;
-  padding-top: 20px;
-  border: 10px solid grey;
+  border: 10px solid #FF5733;
   position: relative;
-  top: 50;
   text-align: center;
-  color: white
+  color: white;
 }
 
-#each-trip {
-  margin: 0 auto;
-  border-style: groove;
-  background: none;
-  padding-bottom: 20px;
-  padding-left: 80px;
-  padding-right: 80px;
-  padding-top: 20px;
-  border: 10px solid grey;
+.each-trip {
+  border: 10px solid #FF5733;
   color: white;
   position: relative;
   top: 50;
   text-align: center;
   color: white
-}*/
+}
