@@ -1,17 +1,86 @@
-<h1 class='all_trips_title'>All Trips</h1>
-  <h2>Trip Count: <%= @trip_count %></h2>
-  <% @trips.each do |trip| %>
-    <h3>Trip Duration: <%= trip.duration %></h3>
-    <h3>Subscription Type: <%= trip.subscription_type %></h3>
-    <form action="/trips/<%= trip.id %>/edit">
-      <input type="submit" value="Edit">
-    </form>
-    <form action="/trips/<%= trip.id %>" method="post">
-      <input type='hidden' name='_method' value='DELETE'>
-      <input type="submit" value="Delete">
-    </form>
-  <% end %>
+<link rel='stylesheet' href='ddtrips.css'/>
 
-<form class="new_trip_button" action="/trips/new">
-  <input type="submit" value="Create a Trip">
-</form>
+<div>
+  <ul class='nav-bar'>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a href="/stations">Stations</a>
+    </li>
+    <li>
+      <a href="/conditions">Weather Conditions</a>
+    </li>
+    <li>
+      <a href="/trips">Trips</a>
+    </li>
+    <li style="float:right">
+      <h1>TRIPS</h1>
+    </li>
+  </ul>
+</div>
+
+<h1>NEED TO PUT SOME DATA IN THE CONCRETE</h1>
+<h1>NEED TO PUT EACH YEAR IN A COLUMN WITHIN A TABLE</h1>
+
+<div class="trips-page">
+  <div class="trips-buttons">
+    <form class="prev-button" action="/trips" method="post">
+      <input type="submit" value="Previous">
+    </form>
+      **need to add logic stating if on first or last page
+      to grey out the previous/next <br>
+    <form class="next-button" action="/trips" method="post">
+      <input type="submit" value="Next">
+    </form>
+
+        <form class="new_station_button" action="/stations/new">
+          <input type="submit" value="Add New Station"/>
+        </form>
+
+        <form class="new_trip_button" action="/trips/new">
+          <input type="submit" value="Create a Trip">
+        </form>
+  </div>
+<div class="all-trips">
+  <h1 class='all_trips_title'>All Trips</h1>
+  <h2>Trip Count: <%= @trip_count %></h2>
+</div>
+    <div class="years-table">
+      <h2>Number of Rides for Each Month <% @number_of_rides_for_each_month.map do |year, months| %></h2>
+        <% year.map do |k,v| %>
+        <h3><%= k %> : <% v.map do |month,rides| %></h3>
+          <h4><%= month %> had <%= rides %> rides</h4>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+
+    <% @trips.each do |trip| %>
+      <div class="each-trip">
+
+      <form action="/trips/<%= trip.id %>">
+        <input type="submit" value="View Station">
+      </form>
+
+        <h3>Trip Duration: <%= trip.duration %></h3>
+        <h3>Start Station: <%= trip.start_station %></h3>
+        <h3>Start Date: <%= trip.start_date %></h3>
+        <h3>Subscription Type: <%= trip.subscription_type %></h3>
+        <h3>Zip Code: <%= trip.zip_code %></h3>
+
+        <form action="/trips/<%= trip.id %>/edit">
+          <input type="submit" value="Edit">
+        </form>
+
+        <form action="/trips/<%= trip.id %>" method="post">
+          <input type='hidden' name='_method' value='DELETE'>
+          <input type="submit" value="Delete">
+        </form>
+      </div>
+      <% end %>
+
+    <%= will_paginate @trips %>
+  </div>
+</div>

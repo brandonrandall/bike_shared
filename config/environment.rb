@@ -21,3 +21,4 @@ class BikeShareApp < Sinatra::Base
   set :public_folder, File.join(APP_ROOT, "app", "public")
 end
 
+require "will_paginate"

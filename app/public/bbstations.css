@@ -1,0 +1,63 @@
+.stations-nav-bar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: blue;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+nav-bar ul {
+  font-family: "Veranda Header"
+}
+
+body {
+  background-image: url("stations2.jpg");
+  background-attachment: fixed;
+  margin: 0;
+}
+
+h1 {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 20px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: black;
+}
+
+.stations-page {
+  position: relative;
+  top: 60px;
+  border: 10px dotted blue;
+}
+.all-stations {
+    text-align: center;
+    color: white;
+    top: 58px;
+  }
+
+.each-station {
+  margin-bottom: 20px;
+  text-align: center;
+  border: dotted blue 10px;
+  padding: 10px 0;
+  width: 75%;
+  margin: auto auto 10px;
+  color: white;
+}

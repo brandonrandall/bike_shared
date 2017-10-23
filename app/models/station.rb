@@ -8,7 +8,7 @@ class Station < ActiveRecord::Base
   validates :installation_date, presence: true
 
   def self.average_per_dock
-    average(:dock_count).round(1)
+    average(:dock_count)
   end
 
   def self.most_bikes_at_a_station

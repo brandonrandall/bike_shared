@@ -7,12 +7,16 @@
 <h2>Subscription Type: <%= @trip.subscription_type %><br></h2>
 <h2>Zip Code: <%= @trip.zip_code %><br></h2>
 
-<form action="/trips/<%= @trip.id %>" method="post">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete">
+<form action="/trips/<%= @trip.id %>/edit">
+  <input type="hidden" name="_method" value="edit">
+  <input type="submit" value="Edit">
 </form>
 
 <form action="/trips/<%= @trip.id %>" method="post">
   <input type='hidden' name='_method' value='DELETE'>
   <input type="submit" value="Delete Trip">
+</form>
+
+<form action="/trips">
+  <input type="submit" value="View All Trips">
 </form>

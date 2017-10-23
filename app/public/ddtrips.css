@@ -1,0 +1,76 @@
+.nav-bar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #FF5733;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+nav-bar ul {
+  font-family: "Veranda Header"
+}
+
+body {
+  background-image: url("tripsimage1.jpg");
+  background-attachment: fixed;
+  margin: 0;
+}
+
+h1 {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 20px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: green;
+}
+
+.trips-page {
+  position: relative;
+  top: 60px;
+}
+
+.trips-buttons {
+  position: left;
+  border: #FF5733 solid 10px;
+  color: white;
+}
+
+.all-trips {
+    border: 10px solid white;
+    position: relative;
+    text-align: left;
+    color: white;
+  }
+
+.years-table {
+  border: 10px solid #FF5733;
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.each-trip {
+  border: 10px solid #FF5733;
+  color: white;
+  position: relative;
+  top: 50;
+  text-align: center;
+  color: white
+}

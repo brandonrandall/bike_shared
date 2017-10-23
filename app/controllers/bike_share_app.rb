@@ -4,6 +4,12 @@ require 'pry'
 
 class BikeShareApp < Sinatra::Base
 
+  include WillPaginate::Sinatra::Helpers
+
+  get '/' do
+    erb :"/welcome/index"
+  end
+
   get '/stations' do
     @stations = Station.all
     @stations_count = Station.all.count
@@ -53,8 +59,10 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
-    @trips = Trip.all
+    # @trips = Trip.order("installation_date").page(params[:page]).per_page(30)
+    @trips = Trip.paginate(:page => params[:page], per_page: 30)
     @trip_count = Trip.all.count
+    @number_of_rides_for_each_month = Trip.number_of_rides_for_each_month
     erb :"/trips/index"
   end
 
@@ -88,4 +96,32 @@ class BikeShareApp < Sinatra::Base
     redirect '/trips'
   end
 
+  get '/trips-dashboard' do
+    @most_trips_for_a_day =  Trip.most_trips_for_a_day
+    @least_trips_for_a_day = Trip.least_trips_for_a_day
+    @high_on_most_trips_day = Condition.high_on_most_trips_day
+    @low_on_most_trips_day = Condition.low_on_most_trips_day
+    # @weather_on_least_trips_day = Condition.weather_on_least_trips_day
+    erb :"/trips/dashboard"
+  end
+
+  get '/conditions' do
+    @conditions = Condition.all
+    @conditions = Condition.paginate(:page => params[:page], per_page: 30)
+    erb :"/conditions/index"
+  end
+
+  get '/conditions/new' do
+    @condition = Condition.create(params[:condition])
+    erb :"/conditions/new"
+  end
+
+  post '/conditions' do
+    @condition = Condition.create(params[:condition])
+    redirect "/conditions/#{@condition.id}"
+  end
+
+  get '/conditions-dashboard' do
+    erb :"/conditions/dashboard"
+  end
 end
