@@ -1,6 +1,7 @@
 require 'will_paginate'
 require 'will_paginate/active_record'
 require 'pry'
+require 'rubygems'
 
 class BikeShareApp < Sinatra::Base
 
