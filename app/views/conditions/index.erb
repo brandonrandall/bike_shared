@@ -1,4 +1,4 @@
-<link rel='stylesheet' href='conditions.css'/>
+<link rel='stylesheet' href='cconditions.css'/>
 
 <div>
   <ul class='nav-bar'>
@@ -19,6 +19,7 @@
     </li>
   </ul>
 </div>
+
 <h1>NEED TO CREATE 2 SEPERATE TABLES FOR EACH CONDITION </h1>
 <div class="conditions-page">
   <form class="conditions-page_new_condition_button" action="/conditions/new" >
@@ -27,10 +28,10 @@
 
   <% @conditions.each do |condition| %>
     <div class="each-condition">
-      Date: <%= condition.date %><br>
-      Precipitaion: <%= condition.precipitation %>
-      Mean Temperature: <%= condition.mean_temp %><br>
-    </div>
+    <h2>  Date: <%= condition.date %></h2>
+    <h2>  Mean Temperature: <%= condition.mean_temp %></h2>
+    <h3>  Precipitaion: <%= condition.precipitation %></h3>
+  </div>
   <% end %>
   <div class="paginate">
     <%= will_paginate @conditions %>

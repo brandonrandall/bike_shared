@@ -1,4 +1,4 @@
-<link rel='stylesheet' href='bstations.css'/>
+<link rel='stylesheet' href='bbstations.css'/>
 
 <nav>
   <ul class='stations-nav-bar'>
@@ -19,36 +19,34 @@
     </li>
   </ul>
 </nav>
-<h1>NEED TO MAKE THE BACKGROUND IMAGE OPAGUE</h1>
-<h1>NEED TO CHANGE THE TEXT TO WHITE</h1>
-<h1>NEED TO PAGINATE BY EVERY 10 STATIONS</h1>
-<h1>NEED TO PUT A BOX AROUND EACH STATION</h1>
-<h1>NEED TO ADD ROLES TO ALLOW CRUD OF A STATION</h1>
-<div class="all-stations">
+<div class="stations-page">
+  <div class="all-stations">
+    <h1>NEED TO MAKE THE BACKGROUND IMAGE OPAGUE</h1>
+    <h1>NEED TO PAGINATE BY EVERY 10 STATIONS</h1>
+    <h1>NEED TO ADD ROLES TO ALLOW CRUD OF A STATION</h1>
+    <h1 class='all_stations_title'>All Stations<h1>
+      <h2>Station Count: <%= @stations_count %></h2>
 
-  <h1 class='all_stations_title'>All Stations<h1>
-    <h2>Station Count: <%= @stations_count %></h2>
-
-    <form class="new_station_button" action="/stations/new">
-      <input type="submit" value="Add New Station"/>
-    </form>
-
-    <form class="stations_dashboard_button" action="/stations-dashboard">
-      <input type="submit" value="Stations Dashboard"/>
-    </form>
-
-  <%@stations.each do |station|%>
-    <h3>Station Name: <%= station.name %></h3>
-
-
-      <form action="/stations/<%= station.id%>/edit">
-        <input type="submit" value="Edit">
+      <form class="new_station_button" action="/stations/new">
+        <input type="submit" value="Add New Station"/>
       </form>
 
-      <form action="/stations/<%= station.id %>" method="post">
-        <input type='hidden' name='_method' value='DELETE'>
-        <input type="submit" value="Delete Station">
+      <form class="stations_dashboard_button" action="/stations-dashboard">
+        <input type="submit" value="Stations Dashboard"/>
       </form>
+
+    <%@stations.each do |station|%>
+    <div class="each-station">
+      <h3>Station Name: <%= station.name %></h3>
+        <form action="/stations/<%= station.id%>/edit">
+          <input type="submit" value="Edit">
+        </form>
+
+        <form action="/stations/<%= station.id %>" method="post">
+          <input type='hidden' name='_method' value='DELETE'>
+          <input type="submit" value="Delete Station">
+        </form>
+      </div>
+    <% end %>
   </div>
-
-<% end %>
+</div>

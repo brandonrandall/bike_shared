@@ -41,17 +41,23 @@ li a:hover {
     background-color: black;
 }
 
-/*.all-stations {
-    margin: 0 auto;
-    border-style: groove;
-    background: none;
-    padding-bottom: 20px;
-    padding-left: 80px;
-    padding-right: 80px;
-    padding-top: 20px;
-    border: 10px solid grey;
-    position: relative;
-    top: 58px;
+.stations-page {
+  position: relative;
+  top: 60px;
+  border: 10px dotted blue;
+}
+.all-stations {
     text-align: center;
     color: white;
-  }*/
+    top: 58px;
+  }
+
+.each-station {
+  margin-bottom: 20px;
+  text-align: center;
+  border: dotted blue 10px;
+  padding: 10px 0;
+  width: 75%;
+  margin: auto auto 10px;
+  color: white;
+}

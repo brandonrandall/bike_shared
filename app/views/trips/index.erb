@@ -1,4 +1,4 @@
-<link rel='stylesheet' href='dtrips.css'/>
+<link rel='stylesheet' href='ddtrips.css'/>
 
 <div>
   <ul class='nav-bar'>
@@ -19,34 +19,33 @@
     </li>
   </ul>
 </div>
-<h1>NEED TO MAKE THE TEXT ORANGE?</h1>
-<h1>NEED TO CENTER THE DATA</h1>
+
 <h1>NEED TO PUT SOME DATA IN THE CONCRETE</h1>
+<h1>NEED TO PUT EACH YEAR IN A COLUMN WITHIN A TABLE</h1>
+
 <div class="trips-page">
+  <div class="trips-buttons">
+    <form class="prev-button" action="/trips" method="post">
+      <input type="submit" value="Previous">
+    </form>
+      **need to add logic stating if on first or last page
+      to grey out the previous/next <br>
+    <form class="next-button" action="/trips" method="post">
+      <input type="submit" value="Next">
+    </form>
 
-  <form class="prev-button" action="/trips" method="post">
-    <input type="submit" value="Previous">
-  </form>
-    #NEED TO CHANGE NUMBERS TO MONTHS
-    #WHY DOES THE BACKGROUND PIC NOT CHANGE ON THIS PAGE? <br>
-    **need to add logic stating if on first or last page
-    to grey out the previous/next <br>
-    **need to style the each-trip below <br>
-  <form class="next-button" action="/trips" method="post">
-    <input type="submit" value="Next">
-  </form>
+        <form class="new_station_button" action="/stations/new">
+          <input type="submit" value="Add New Station"/>
+        </form>
 
-      <form class="new_station_button" action="/stations/new">
-        <input type="submit" value="Add New Station"/>
-      </form>
-
-      <form class="new_trip_button" action="/trips/new">
-        <input type="submit" value="Create a Trip">
-      </form>
-
-      <h1 class='all_trips_title'>All Trips</h1>
-      <h2>Trip Count: <%= @trip_count %></h2>
-
+        <form class="new_trip_button" action="/trips/new">
+          <input type="submit" value="Create a Trip">
+        </form>
+  </div>
+<div class="all-trips">
+  <h1 class='all_trips_title'>All Trips</h1>
+  <h2>Trip Count: <%= @trip_count %></h2>
+</div>
     <div class="years-table">
       <h2>Number of Rides for Each Month <% @number_of_rides_for_each_month.map do |year, months| %></h2>
         <% year.map do |k,v| %>
@@ -59,7 +58,7 @@
 
 
     <% @trips.each do |trip| %>
-      <div id="each-trip">
+      <div class="each-trip">
 
       <form action="/trips/<%= trip.id %>">
         <input type="submit" value="View Station">
