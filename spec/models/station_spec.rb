@@ -28,7 +28,6 @@ RSpec.describe Station do
     average = Station.all.map(&:dock_count).reduce(:+)/Station.count.to_f
     average_per_dock = Station.average_per_dock
     expect(average).to eq(average_per_dock)
-    # binding.pry
   end
 
   it "returns the station with the latest installation date" do
