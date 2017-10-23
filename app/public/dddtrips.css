@@ -62,7 +62,7 @@ li a:hover {
 .years-table {
   border: 10px solid #FF5733;
   position: relative;
-  text-align: center;
+  text-align: right;
   color: white;
 }
 
