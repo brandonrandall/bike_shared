@@ -43,6 +43,12 @@ li a:hover {
 
 .welcome-page {
   position: relative;
-  top: 100px;
+  top: 58px;
   border: 100px;
+}
+
+.welcome-message {
+  position: relative;
+  top: 58px;
+  border: 100px dotted ;
 }

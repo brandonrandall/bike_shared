@@ -44,11 +44,12 @@ class Trip < ActiveRecord::Base
   def self.most_trips_for_a_day
     #select all unique trips from start date
     days = [1,2,3,4,5,6,7,8,9,10,11,12]
-    days.map do |day|
-      found = Trip.where('extract(day from start_date) = ?', day)
-      .group(:start_date)
+    counts_by_day = days.map do |day|
+      count = Trip.where('extract(day from start_date) = ?', day)
       .count(:id)
+      { day => count }
     end
+    counts_by_day
     # end
     # start_dates = Trip.distinct.pluck(:start_date)
     # days_with_trips = start_dates.map {|start_date| [start_date,Trip.where(start_date: start_date).count]}

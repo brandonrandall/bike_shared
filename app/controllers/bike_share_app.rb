@@ -61,6 +61,7 @@ class BikeShareApp < Sinatra::Base
   end
 
   get '/trips' do
+    @most_trips_for_a_day = Trip.most_trips_for_a_day
     # @trips = Trip.order("installation_date").page(params[:page]).per_page(30)
     @trips = Trip.paginate(:page => params[:page], per_page: 30)
     @trip_count = Trip.all.count
