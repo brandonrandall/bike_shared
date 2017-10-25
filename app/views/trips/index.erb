@@ -1,5 +1,5 @@
-<link rel='stylesheet' href='ddtrips.css'/>
-
+<link rel='stylesheet' href='dddtrips.css'/>
+<%= @most_trips_for_a_day %>
 <div>
   <ul class='nav-bar'>
     <li>
@@ -20,7 +20,6 @@
   </ul>
 </div>
 
-<h1>NEED TO PUT SOME DATA IN THE CONCRETE</h1>
 <h1>NEED TO PUT EACH YEAR IN A COLUMN WITHIN A TABLE</h1>
 
 <div class="trips-page">
@@ -42,6 +41,7 @@
           <input type="submit" value="Create a Trip">
         </form>
   </div>
+
 <div class="all-trips">
   <h1 class='all_trips_title'>All Trips</h1>
   <h2>Trip Count: <%= @trip_count %></h2>
@@ -56,13 +56,11 @@
       <% end %>
     </div>
 
-
     <% @trips.each do |trip| %>
       <div class="each-trip">
-
-      <form action="/trips/<%= trip.id %>">
-        <input type="submit" value="View Station">
-      </form>
+        <form action="/trips/<%= trip.id %>">
+          <input type="submit" value="View Station">
+        </form>
 
         <h3>Trip Duration: <%= trip.duration %></h3>
         <h3>Start Station: <%= trip.start_station %></h3>

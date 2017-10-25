@@ -8,6 +8,7 @@
   top: 0;
   width: 100%;
   z-index: 1;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 nav-bar ul {
@@ -62,8 +63,9 @@ li a:hover {
 .years-table {
   border: 10px solid #FF5733;
   position: relative;
-  text-align: center;
+  text-align: right;
   color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .each-trip {
@@ -73,4 +75,8 @@ li a:hover {
   top: 50;
   text-align: center;
   color: white
+}
+
+each-trip:hover {
+  background-color: green;
 }
