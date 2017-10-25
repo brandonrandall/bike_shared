@@ -42,13 +42,19 @@ class Trip < ActiveRecord::Base
   end
 
   def self.most_trips_for_a_day
-
-    #LOOK AT GROUP
-
-    start_dates = Trip.distinct.pluck(:start_date)
-    days_with_trips = start_dates.map {|start_date| [start_date,Trip.where(start_date: start_date).count]}
-    @date_with_time = days_with_trips.max_by { |day| day[1]}
-    days_with_trips.max_by { |day| day[1]}[1]
+    #select all unique trips from start date
+    days = [1,2,3,4,5,6,7,8,9,10,11,12]
+    counts_by_day = days.map do |day|
+      count = Trip.where('extract(day from start_date) = ?', day)
+      .count(:id)
+      { day => count }
+    end
+    counts_by_day
+    # end
+    # start_dates = Trip.distinct.pluck(:start_date)
+    # days_with_trips = start_dates.map {|start_date| [start_date,Trip.where(start_date: start_date).count]}
+    # @date_with_time = days_with_trips.max_by { |day| day[1]}
+    # days_with_trips.max_by { |day| day[1]}[1]
   end
 
   def self.most_trips_including_date

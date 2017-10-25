@@ -4,7 +4,6 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec'
 require 'database_cleaner'
 require 'capybara/dsl'
-require 'pry'
 
 Capybara.app = BikeShareApp
 

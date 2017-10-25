@@ -1,4 +1,4 @@
-<h2>Duration: <%= @trip.duration %><br></h2>
+<h2>Duration: <%= Time.at(@trip.duration).utc.strftime("HOURS: %H - MINUTES: %M - SECONDS: %S") %><br></h2>
 <h2>Start Date: <%= @trip.start_date %><br></h2>
 <h2>Start Station: <%= @trip.start_station %><br></h2>
 <h2>End Date: <%= @trip.end_date %><br></h2>

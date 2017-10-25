@@ -2,7 +2,6 @@ require 'csv'
 require './app/models/station.rb'
 require './app/models/trip.rb'
 require './app/models/condition.rb'
-require 'pry'
 require 'Date'
 
 CSV.foreach('db/csv/bike_stations.csv', headers: true) do |row|
