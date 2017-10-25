@@ -3,7 +3,8 @@
 In this project we use Ruby, Sinatra, and Activerecord to build a site that analyzes bike share usage in San Francisco.
 
 We also:
-* Use TDD throughout. Tests are expected for all features and all models.
+* Use TDD throughout. Tests are created for all features and all models.
+* Use HTML and CSS to style the pages.
 * Use ActiveRecord migrations to create a normalized database
 * Use intermediate ActiveRecord queries to calculate and report on information in the database
 * Utilize ActiveRecord methods and relationships to efficiently query the database
